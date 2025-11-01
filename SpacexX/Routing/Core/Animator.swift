@@ -5,7 +5,8 @@
 //  Created by Baki on 31.10.2025.
 //
 
-import Foundation
+import UIKit
+
 
 protocol Animator: UIViewControllerAnimatedTransitioning {
     var isPresenting: Bool { get set }
