@@ -5,4 +5,18 @@
 //  Created by Baki on 31.10.2025.
 //
 
-import Foundation
+import UIKit
+
+protocol AppRouterRoutes: HomeRoute {
+    func startApp()
+    
+}
+
+final class AppRouter: Router, AppRouterRoutes  {
+
+    static let shared = AppRouter()
+    
+    func startApp() {
+        presentHome()
+    }
+}
