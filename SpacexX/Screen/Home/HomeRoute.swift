@@ -5,21 +5,24 @@
 //  Created by Baki on 1.11.2025.
 //
 
+import UIKit
+
 protocol HomeRoute {
-    func presentHome()
+    func placeOnWindowHome()
 }
 
 extension HomeRoute where Self: RouterProtocol {
     
-    func presentHome() {
+    func placeOnWindowHome() {
         let router = HomeRouter()
         let viewModel = HomeViewModel(router: router)
         let viewController = HomeViewController(viewModel: viewModel)
+        let navigationContoller = UINavigationController(rootViewController: viewController)
         
-        let transition = ModalTransition()
+        let transition = PlaceOnWindowTransition()
         router.viewController = viewController
         router.openTransition = transition
         
-        open(viewController, transition: transition)
+        open(navigationContoller, transition: transition)
     }
 }
