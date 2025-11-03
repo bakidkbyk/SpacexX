@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D08150A2EB8AB8F007A153C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0815092EB8AB8F007A153C /* Alamofire */; };
+		2D0815692EB8CD22007A153C /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0815682EB8CD22007A153C /* TinyConstraints */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D08150A2EB8AB8F007A153C /* Alamofire in Frameworks */,
+				2D0815692EB8CD22007A153C /* TinyConstraints in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +86,7 @@
 			name = SpacexX;
 			packageProductDependencies = (
 				2D0815092EB8AB8F007A153C /* Alamofire */,
+				2D0815682EB8CD22007A153C /* TinyConstraints */,
 			);
 			productName = SpacexX;
 			productReference = 2D0813122EB4C7A9007A153C /* SpacexX.app */;
@@ -115,6 +118,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				2D0815082EB8AB8F007A153C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2D0815672EB8CD22007A153C /* XCRemoteSwiftPackageReference "TinyConstraints" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2D0813132EB4C7A9007A153C /* Products */;
@@ -352,6 +356,14 @@
 				minimumVersion = 5.10.2;
 			};
 		};
+		2D0815672EB8CD22007A153C /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/roberthein/TinyConstraints.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -359,6 +371,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2D0815082EB8AB8F007A153C /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		2D0815682EB8CD22007A153C /* TinyConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D0815672EB8CD22007A153C /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

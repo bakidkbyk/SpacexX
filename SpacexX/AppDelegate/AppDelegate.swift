@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let bounds = UIScreen.main.bounds
         self.window = UIWindow(frame: bounds)
         self.window?.makeKeyAndVisible()
-        window?.rootViewController = ViewController()
+        AppRouter.shared.startApp()
         return true
     }
 }
