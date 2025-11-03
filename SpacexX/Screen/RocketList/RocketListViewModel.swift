@@ -23,8 +23,3 @@ final class RocketListViewModel: BaseViewModel<RocketListRouter>, RocketListView
         super.init(router: RocketListRouter())
     }
 }
-
-enum ListPageType {
-    case past
-    case upcoming
-}
