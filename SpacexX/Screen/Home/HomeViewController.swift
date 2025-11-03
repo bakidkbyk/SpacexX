@@ -57,15 +57,13 @@ extension HomeViewController {
         pageViewController.dataSource = self
         segmentControl.height(40)
         
-        pageViewController.setViewControllers([subViewControllers[viewModel.selectedSegmentIndex]], direction: .forward, animated: true)
+        pageViewController.setViewControllers([subViewControllers[viewModel.selectedSegmentIndex]], direction: .forward, animated: false)
         segmentControl.selectedSegmentIndex = 0
-        
         segmentControl.addTarget(self, action:
                                     #selector(segmentControlValueDidChange), for: .valueChanged)
-        
     }
     
-    private func setLocalize(){
+    private func setLocalize() {
         navigationItem.title = "Launches"
     }
 }
@@ -74,7 +72,7 @@ extension HomeViewController {
 extension HomeViewController {
     
     @objc
-    func segmentControlValueDidChange(_ sender: UISegmentedControl) {
+    private func segmentControlValueDidChange(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
         let direction: UIPageViewController.NavigationDirection
         switch selectedIndex > viewModel.selectedSegmentIndex {
@@ -93,14 +91,14 @@ extension HomeViewController {
 extension HomeViewController {
     
     private  func configureControllers() -> [UIViewController] {
-        let upcomingRouter = UpcomingRouter()
-        let upcomingViewModel = UpcomingViewModel(router: upcomingRouter)
-        let upcomingViewController = UpcomingViewController(viewModel: upcomingViewModel)
+        let upcomingRouter = GenericListRouter()
+        let upcomingViewModel = GenericListViewModel(type: .upcoming)
+        let upcomingViewController = GenericListViewController(viewModel: upcomingViewModel)
         upcomingRouter.viewController = upcomingViewController
         
-        let pastRouter = PastRouter()
-        let pastViewModel = PastViewModel(router: pastRouter)
-        let pastViewController = PastViewController(viewModel: pastViewModel)
+        let pastRouter = GenericListRouter()
+        let pastViewModel = GenericListViewModel(type: .past)
+        let pastViewController = GenericListViewController(viewModel: pastViewModel)
         pastRouter.viewController = pastViewController
         
         return [upcomingViewController, pastViewController]
