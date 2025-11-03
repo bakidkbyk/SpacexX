@@ -91,14 +91,14 @@ extension HomeViewController {
 extension HomeViewController {
     
     private  func configureControllers() -> [UIViewController] {
-        let upcomingRouter = GenericListRouter()
-        let upcomingViewModel = GenericListViewModel(type: .upcoming)
-        let upcomingViewController = GenericListViewController(viewModel: upcomingViewModel)
+        let upcomingRouter = RocketListRouter()
+        let upcomingViewModel = RocketListViewModel(type: .upcoming)
+        let upcomingViewController = RocketListViewController(viewModel: upcomingViewModel)
         upcomingRouter.viewController = upcomingViewController
         
-        let pastRouter = GenericListRouter()
-        let pastViewModel = GenericListViewModel(type: .past)
-        let pastViewController = GenericListViewController(viewModel: pastViewModel)
+        let pastRouter = RocketListRouter()
+        let pastViewModel = RocketListViewModel(type: .past)
+        let pastViewController = RocketListViewController(viewModel: pastViewModel)
         pastRouter.viewController = pastViewController
         
         return [upcomingViewController, pastViewController]
