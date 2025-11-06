@@ -7,7 +7,7 @@
 
 import UIKit
 import TinyConstraints
-
+import Kingfisher
 
 public class RocketListCell: UICollectionViewCell, ReusableView {
     
@@ -71,10 +71,6 @@ public class RocketListCell: UICollectionViewCell, ReusableView {
         super.init(coder: aDecoder)
         configureContents()
     }
-    
-    public func set(viewModel: RocketListCellProtocol) {
-        self.viewModel = viewModel
-    }
 }
 
 // MARK: - Configure Contents
@@ -104,5 +100,21 @@ extension RocketListCell {
         seperator.leadingToSuperview().constant = 16
         seperator.trailingToSuperview().constant = -16
         seperator.bottomToSuperview()
+    }
+}
+
+// MARK: - Set View Model
+extension RocketListCell {
+    
+    public func set(viewModel: RocketListCellProtocol) {
+        self.viewModel = viewModel
+        self.nameLabel.text = viewModel.name
+        self.dateLabel.text = viewModel.date
+        
+        if viewModel.imageUrl.isEmpty {
+            imageView.image = UIImage(systemName: "exclamationmark.circle.fill")
+        } else {
+            imageView.setImage(viewModel.imageUrl)
+        }
     }
 }
