@@ -21,6 +21,11 @@ final class RocketListViewModel: BaseViewModel<RocketListRouter>, RocketListView
     var rocketListCellItem: [RocketListCellProtocol] = []
     var getDataDidSuccess: VoidClosure?
     
+    private var page = 1
+    private var hasNextPage = true
+    private var isLoadingPage = false
+    
+    
     
     func numberOfItemsAt() -> Int {
         return rocketListCellItem.count
@@ -35,7 +40,7 @@ final class RocketListViewModel: BaseViewModel<RocketListRouter>, RocketListView
     init(type: ListPageType) {
         self.type = type
         super.init(router: RocketListRouter())
-        rocketListRequest(for: type)
+        rocketListRequest(for: type, page: page)
     }
 }
 
@@ -45,10 +50,17 @@ extension RocketListViewModel {}
 // MARK: - Network
 extension RocketListViewModel {
     
-    func rocketListRequest(for type: ListPageType) {
+    func rocketListRequest(for type: ListPageType, page: Int) {
+        guard !isLoadingPage, hasNextPage else { return }
+        isLoadingPage = true
+        
+        if page == 1 {
+            showLoading?()
+        } else {
+            showActivityIndicatorBottomView?()
+        }
         switch type {
         case .upcoming:
-            showLoading?()
             let request = UpcomingRequest()
             dataProvider.request(for: request) { [weak self] result in
                 guard let self = self else { return }
@@ -63,7 +75,6 @@ extension RocketListViewModel {
                 }
             }
         case .past:
-            showLoading?()
             let request = PastRequest()
             dataProvider.request(for: request) { [weak self] result in
                 guard let self = self else { return }

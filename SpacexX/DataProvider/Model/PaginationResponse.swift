@@ -11,9 +11,11 @@ public struct PaginationResponse: Decodable {
     
     public let page: Int
     public let nextPage: Int
+    public let hasNextPage: Bool
     
     enum CodingKeys: String, CodingKey {
         case page
         case nextPage
+        case hasNextPage
     }
 }
