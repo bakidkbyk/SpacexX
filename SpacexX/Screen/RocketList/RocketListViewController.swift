@@ -24,12 +24,14 @@ final class RocketListViewController: BaseViewController<RocketListViewModel> {
         return collectionView
     }()
     
+    private let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubViews()
         configureContents()
         subscribeViewModel()
-        viewModel.rocketListRequest(for: viewModel.type)
+        viewModel.rocketListRequest(isRefReshing: false)
     }
 }
 
@@ -53,6 +55,21 @@ extension RocketListViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(RocketListCell.self)
+        refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+}
+
+// MARK: - Scroll View
+extension RocketListViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height * 1.5 {
+            viewModel.rocketListRequest(isRefReshing: false)
+        }
     }
 }
 
@@ -66,6 +83,18 @@ extension RocketListViewController {
                 self.collectionView.reloadData()
             }
         }
+        viewModel.endRefreshing = { [weak self] in
+            self?.refreshControl.endRefreshing()
+        }
+    }
+}
+
+// MARK: Actions
+extension RocketListViewController {
+    
+    @objc
+    func handleRefreshControl() {
+        viewModel.refreshData()
     }
 }
 

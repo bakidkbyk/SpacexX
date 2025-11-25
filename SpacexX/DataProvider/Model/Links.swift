@@ -9,7 +9,7 @@ import Foundation
 
 public struct Links: Decodable {
     
-    public let patch: Patch
+    public let patch: ImageCount
     
     enum CodingKeys: String, CodingKey {
         case patch

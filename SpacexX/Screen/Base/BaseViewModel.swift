@@ -17,7 +17,7 @@ protocol BaseViewModelEventSource: AnyObject {
     var showLoading: VoidClosure? { get set }
     var hideLoading: VoidClosure? { get set }
     
-    var showTryAgainButton: VoidClosure? { get set }
+    var showTryAgainButton: ButtonStringClosure? { get set }
     var hideTryAgainButton: VoidClosure? { get set }
     
 }
@@ -37,8 +37,9 @@ class BaseViewModel<R: Router>: BaseViewModelProtocol {
     var showLoading: VoidClosure?
     var hideLoading: VoidClosure?
     
-    var showTryAgainButton: VoidClosure?
+    var showTryAgainButton: ButtonStringClosure?
     var hideTryAgainButton: VoidClosure?
+    
     
     let router: R
     let dataProvider: DataProviderProtocol
