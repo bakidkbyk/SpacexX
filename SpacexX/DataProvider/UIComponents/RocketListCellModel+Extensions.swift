@@ -9,6 +9,6 @@ import Foundation
 
 extension RocketListCellModel {
     convenience init(rocketListReponse: RocketListResponse) {
-        self.init(imageUrl: rocketListReponse.links.patch.small ?? "", name: rocketListReponse.name, date: rocketListReponse.dateLocal)
+        self.init(imageUrl: rocketListReponse.links.patch.small ?? "", name: rocketListReponse.name ?? "", date: rocketListReponse.dateLocal ?? "")
     }
 }

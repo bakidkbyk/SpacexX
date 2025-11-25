@@ -9,10 +9,10 @@ import UIKit
 
 public struct RocketListResponse: Decodable {
     public let links: Links
-    public let dateLocal: String
-    public let upcoming: Bool
-    public let id: String
-    public let name: String
+    public let dateLocal: String?
+    public let upcoming: Bool?
+    public let id: String?
+    public let name: String?
     
     enum CodingKeys: String, CodingKey {
         case links

@@ -108,7 +108,7 @@ extension HomeViewController {
 
 // MARK: - Page View Controller Delegate
 extension HomeViewController: UIPageViewControllerDelegate {
-    
+     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         
         guard completed,

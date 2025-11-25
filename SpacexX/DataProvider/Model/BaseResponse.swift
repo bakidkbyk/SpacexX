@@ -7,9 +7,13 @@
 
 import Foundation
 
-public struct BaseResponse<T: Decodable>: Decodable {
+public struct BaseResponse: Decodable {
     
-    public let docs: T
-    public let pagination: PaginationResponse
+    public let docs: [RocketListResponse]
+    public let page: Int
+    public let nextPage: Int?
+    public let hasNextPage: Bool
+    public let totalDocs: Int?
+    public let limit: Int?
     
 }
